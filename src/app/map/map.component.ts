@@ -28,12 +28,13 @@ export class MapComponent implements OnInit {
     }).addTo(this.map);
 
     this.objects.forEach((obj) => {
-      if (this.map) {
-        const marker = L.marker([obj.latitude, obj.longitude]).addTo(this.map);
-        marker.bindPopup(obj.name);
-      } else {
-        console.error('Map is null.');
-      }
+      const marker = L.marker([obj.latitude, obj.longitude]).addTo(this.map);
+      marker.bindPopup(obj.name);
+      marker.on('click', (e) => {
+        console.log('Marker Clicked:', obj);
+        this.selectedObject = obj;
+        this.map.setView([obj.latitude, obj.longitude], 10);
+      });
     });
   }
 
