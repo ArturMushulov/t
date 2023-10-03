@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Object } from '../object.model';
 import { ObjectService } from '../object.service';
-
 import { ObjectSelectionService } from '../object-selection.service';
 
 import * as L from 'leaflet';

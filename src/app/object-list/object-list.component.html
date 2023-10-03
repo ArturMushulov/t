@@ -1,9 +1,18 @@
-<ul>
-  <li
-    *ngFor="let obj of objects"
-    [class.selected]="obj === selectedObject"
-    (click)="handleClick(obj)"
-  >
-    {{ obj.name }}
-  </li>
-</ul>
+<div class="wrapper">
+  <div class="search">
+    <input type="text" [(ngModel)]="searchText" placeholder="Поиск..." />
+  </div>
+  <div class="list">
+    <ul>
+      <ng-container *ngFor="let obj of objects">
+        <li
+          [class.selected]="obj === selectedObject"
+          (click)="handleClick(obj)"
+          *ngIf="passesFilter(obj)"
+        >
+          {{ obj.name }}
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>

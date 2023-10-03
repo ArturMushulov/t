@@ -12,6 +12,7 @@ export class ObjectListComponent implements OnInit {
   @Input() objects!: Object[];
   @Output() objectSelected = new EventEmitter<Object>();
   selectedObject!: Object;
+  searchText: string = '';
 
   constructor(
     private objectService: ObjectService,
@@ -20,6 +21,10 @@ export class ObjectListComponent implements OnInit {
 
   ngOnInit(): void {
     this.objects = this.objectService.getObjects();
+  }
+
+  passesFilter(obj: Object): boolean {
+    return obj.name.toLowerCase().includes(this.searchText.toLowerCase());
   }
   handleClick(obj: Object): void {
     this.objectSelectionService.selectObject(obj);

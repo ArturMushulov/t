@@ -1,27 +1,73 @@
-# TestMyMapApp
+# <u>My Map App </u>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.4.
+Это приложение Angular, которое отображает карту с маркерами объектов и позволяет выбирать объекты из списка.
 
-## Development server
+### Установка и запуск
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Убедитесь, что у вас установлен Node.js и npm.
 
-## Code scaffolding
+2. Клонируйте репозиторий на свой компьютер:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+> ```
+>   git clone https://github.com/ArturMushulov/t
+> ```
 
-## Build
+### Перейдите в директорию проекта:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+> ```
+> cd my-map-app
+> ```
 
-## Running unit tests
+### Установите зависимости проекта:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+> ```
+> npm install
+> ```
 
-## Running end-to-end tests
+### Запустите приложение:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+> ```
+> ng serve
+> ```
 
-## Further help
+##### Приложение будет доступно по адресу http://localhost:4200/.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+##### Используемые библиотеки
+
+**Angular:** Фреймворк для разработки веб-приложений.
+**Leaflet:** Библиотека для работы с интерактивными картами.
+**ngx-leaflet:** Библиотека для интеграции Leaflet с Angular.
+
+### Структура проекта
+
+#### Проект состоит из следующих компонентов:
+
+**AppComponent:** Корневой компонент приложения.
+**MapComponent:** Компонент для отображения карты и маркеров объектов.
+**ObjectListComponent:** Компонент для отображения списка объектов и их выбора.
+
+#### Функциональность
+
+- Карта отображает маркеры объектов на основе данных из предоставленного списка.
+- По нажатию на маркер объекта на карте, выбранный объект меняется, и карта центрируется на выбранном маркере.
+- Выбранный объект также можно изменить, выбрав его из списка объектов.
+
+#### Интеграционные тесты
+
+В приложении реализованы интеграционные тесты с использованием Jasmine и TestBed.
+
+**Тесты находятся в директории**
+
+> ```
+> src/app/integration-tests.
+> ```
+
+E2E (end-to-end) тесты
+E2E тесты выполняются с использованием инструмента Protractor. Тесты проверяют основные сценарии использования приложения. Запустите E2E тесты с помощью команды:
+
+> ```
+> ng e2e
+> ```
+
+Автор
+**Артур Мушулов**

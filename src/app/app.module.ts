@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { ObjectListComponent } from './object-list/object-list.component';
 import { ObjectSelectionService } from './object-selection.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, MapComponent, ObjectListComponent],
-  imports: [BrowserModule, LeafletModule, AppRoutingModule],
+  imports: [BrowserModule, LeafletModule, AppRoutingModule, FormsModule],
   providers: [ObjectSelectionService],
   bootstrap: [AppComponent],
 })
