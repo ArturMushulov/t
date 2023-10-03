@@ -15,9 +15,11 @@ export class ObjectListComponent implements OnInit {
 
   ngOnInit(): void {
     this.objects = this.objectService.getObjects();
+    console.log('Objects:', this.objects);
   }
 
   selectObject(obj: Object): void {
     this.selectedObject = obj;
+    console.log(this.selectObject);
   }
 }

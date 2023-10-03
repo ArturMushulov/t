@@ -11,7 +11,7 @@ import * as L from 'leaflet';
 export class MapComponent implements OnInit {
   objects: Object[] = [];
   selectedObject: Object | null = null;
-  map: L.Map | null = null;
+  map!: L.Map;
 
   constructor(private objectService: ObjectService) {}
 
@@ -40,7 +40,7 @@ export class MapComponent implements OnInit {
   selectObject(obj: Object): void {
     this.selectedObject = obj;
     if (this.map) {
-      this.map.setView([obj.latitude, obj.longitude], 10);
+      this.map.setView([obj.latitude, obj.longitude], 13);
     }
   }
 }
