@@ -2,7 +2,7 @@
   <li
     *ngFor="let obj of objects"
     [class.selected]="obj === selectedObject"
-    (click)="selectObject(obj)"
+    (click)="handleClick(obj)"
   >
     {{ obj.name }}
   </li>

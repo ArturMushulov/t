@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Object } from '../object.model';
 import { ObjectService } from '../object.service';
+
+import { ObjectSelectionService } from '../object-selection.service';
+
 import * as L from 'leaflet';
 
 @Component({
@@ -9,11 +12,14 @@ import * as L from 'leaflet';
   styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
-  objects: Object[] = [];
-  selectedObject: Object | null = null;
+  objects!: Object[];
+  selectedObject!: Object;
   map!: L.Map;
 
-  constructor(private objectService: ObjectService) {}
+  constructor(
+    private objectService: ObjectService,
+    private objectSelectionService: ObjectSelectionService
+  ) {}
 
   ngOnInit(): void {
     this.objects = this.objectService.getObjects();
@@ -30,18 +36,21 @@ export class MapComponent implements OnInit {
     this.objects.forEach((obj) => {
       const marker = L.marker([obj.latitude, obj.longitude]).addTo(this.map);
       marker.bindPopup(obj.name);
+
       marker.on('click', (e) => {
-        console.log('Marker Clicked:', obj);
         this.selectedObject = obj;
+        this.objectSelectionService.selectObject(obj);
         this.map.setView([obj.latitude, obj.longitude], 10);
       });
     });
+    this.objectSelectionService.objectSelected$.subscribe((obj) => {
+      if (obj) {
+        this.zoomToMarker(obj);
+      }
+    });
   }
 
-  selectObject(obj: Object): void {
-    this.selectedObject = obj;
-    if (this.map) {
-      this.map.setView([obj.latitude, obj.longitude], 13);
-    }
+  zoomToMarker(obj: Object): void {
+    this.map.flyTo([obj.latitude, obj.longitude], 10);
   }
 }

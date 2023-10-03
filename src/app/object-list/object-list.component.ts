@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Object } from '../object.model';
 import { ObjectService } from '../object.service';
+import { ObjectSelectionService } from '../object-selection.service';
 
 @Component({
   selector: 'app-object-list',
@@ -8,18 +9,19 @@ import { ObjectService } from '../object.service';
   styleUrls: ['./object-list.component.css'],
 })
 export class ObjectListComponent implements OnInit {
-  objects: Object[] = [];
-  selectedObject: Object | null = null;
+  @Input() objects!: Object[];
+  @Output() objectSelected = new EventEmitter<Object>();
+  selectedObject!: Object;
 
-  constructor(private objectService: ObjectService) {}
+  constructor(
+    private objectService: ObjectService,
+    private objectSelectionService: ObjectSelectionService
+  ) {}
 
   ngOnInit(): void {
     this.objects = this.objectService.getObjects();
-    console.log('Objects:', this.objects);
   }
-
-  selectObject(obj: Object): void {
-    this.selectedObject = obj;
-    console.log(this.selectObject);
+  handleClick(obj: Object): void {
+    this.objectSelectionService.selectObject(obj);
   }
 }

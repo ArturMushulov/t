@@ -6,11 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { ObjectListComponent } from './object-list/object-list.component';
+import { ObjectSelectionService } from './object-selection.service';
 
 @NgModule({
   declarations: [AppComponent, MapComponent, ObjectListComponent],
   imports: [BrowserModule, LeafletModule, AppRoutingModule],
-  providers: [],
+  providers: [ObjectSelectionService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
