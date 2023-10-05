@@ -32,7 +32,7 @@ export class MapComponent implements OnInit {
       maxZoom: 19,
     }).addTo(this.map);
 
-    this.objects.forEach((obj) => {
+    this.objects.map((obj) => {
       const marker = L.marker([obj.latitude, obj.longitude]).addTo(this.map);
       marker.bindPopup(obj.name);
 
